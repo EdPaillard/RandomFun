@@ -1,0 +1,37 @@
+version: "3.8"
+services:
+  client:
+    build:
+      dockerfile: Dockerfile
+      context: "./front_rf"
+    ports:
+      - "8087:8087"
+  server:
+    build:
+      dockerfile: Dockerfile
+      context: "./back_rf"
+    ports:
+      - "7777:7777"
+    environment:
+      POSTGRES_HOST: $POSTGRES_HOST
+      POSTGRES_USER: $POSTGRES_USER
+      POSTGRES_PASSWORD: $POSTGRES_PASSWORD
+      POSTGRES_DB: $POSTGRES_DB
+      POSTGRES_PORT: $POSTGRES_PORT
+    depends_on: 
+      - psqlrfdb
+  psqlrfdb:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_HOST: $POSTGRES_HOST
+      POSTGRES_USER: $POSTGRES_USER
+      POSTGRES_PASSWORD: $POSTGRES_PASSWORD
+      POSTGRES_DB: $POSTGRES_DB
+      POSTGRES_PORT: $POSTGRES_PORT
+    ports:
+      - 5477:5477
+    volumes:
+      - psqlrfdb_data:/var/lib/postgresql/data/pg_rfdata
+volumes:
+  psqlrfdb_data:
