@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: randomfun-pv
+  labels:
+    type: local
+    app: randomfun-pv
+spec:
+  storageClassName: randomfun-storage
+  capacity:
+    storage: 10Gi
+  accessModes:
+    - ReadWriteOnce
+  hostPath:
+    path: "/var/lib/postgresql/data/PG_RANDOMFUN"
+
+---
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: randomfun-pvc
+  labels:
+    app: randomfun-pvc
+spec:
+  storageClassName: randomfun-storage
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 5Gi
