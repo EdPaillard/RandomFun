@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: randomfun-configmap
+  labels:
+    app: randomfun
+data:
+  POSTGRES_HOST: randomfun-postgres-svc
+  POSTGRES_PORT: "5432"
+  POSTGRES_DB: back_rf_dev

@@ -9,7 +9,11 @@ defmodule BackRfWeb.Router do
     pipe_through :api
     resources "/games", GameController, except: [:new, :edit]
     resources "/sentences", SentenceController, except: [:new, :edit]
-    resources "/photos", PhotoController, except: [:new, :edit]
+    resources "/images", ImagesController, except: [:new, :edit]
+    scope "/photos" do
+      resources "/", PhotoController, except: [:new, :edit]
+      get "/list/length", PhotoController, :get_length
+    end
   end
 
   # Enables LiveDashboard only for development

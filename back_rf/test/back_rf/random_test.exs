@@ -170,4 +170,58 @@ defmodule BackRf.RandomTest do
       assert %Ecto.Changeset{} = Random.change_photo(photo)
     end
   end
+
+  describe "images" do
+    alias BackRf.Random.Images
+
+    import BackRf.RandomFixtures
+
+    @invalid_attrs %{image: nil}
+
+    test "list_images/0 returns all images" do
+      images = images_fixture()
+      assert Random.list_images() == [images]
+    end
+
+    test "get_images!/1 returns the images with given id" do
+      images = images_fixture()
+      assert Random.get_images!(images.id) == images
+    end
+
+    test "create_images/1 with valid data creates a images" do
+      valid_attrs = %{image: "some image"}
+
+      assert {:ok, %Images{} = images} = Random.create_images(valid_attrs)
+      assert images.image == "some image"
+    end
+
+    test "create_images/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Random.create_images(@invalid_attrs)
+    end
+
+    test "update_images/2 with valid data updates the images" do
+      images = images_fixture()
+      update_attrs = %{image: "some updated image"}
+
+      assert {:ok, %Images{} = images} = Random.update_images(images, update_attrs)
+      assert images.image == "some updated image"
+    end
+
+    test "update_images/2 with invalid data returns error changeset" do
+      images = images_fixture()
+      assert {:error, %Ecto.Changeset{}} = Random.update_images(images, @invalid_attrs)
+      assert images == Random.get_images!(images.id)
+    end
+
+    test "delete_images/1 deletes the images" do
+      images = images_fixture()
+      assert {:ok, %Images{}} = Random.delete_images(images)
+      assert_raise Ecto.NoResultsError, fn -> Random.get_images!(images.id) end
+    end
+
+    test "change_images/1 returns a images changeset" do
+      images = images_fixture()
+      assert %Ecto.Changeset{} = Random.change_images(images)
+    end
+  end
 end

@@ -48,4 +48,18 @@ defmodule BackRf.RandomFixtures do
 
     photo
   end
+
+  @doc """
+  Generate a images.
+  """
+  def images_fixture(attrs \\ %{}) do
+    {:ok, images} =
+      attrs
+      |> Enum.into(%{
+        image: "some image"
+      })
+      |> BackRf.Random.create_images()
+
+    images
+  end
 end

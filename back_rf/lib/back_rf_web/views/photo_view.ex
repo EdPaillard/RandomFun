@@ -11,9 +11,6 @@ defmodule BackRfWeb.PhotoView do
   end
 
   def render("photo.json", %{photo: photo}) do
-    %{
-      id: photo.id,
-      image: photo.image
-    }
+    photo.image
   end
 end

@@ -8,21 +8,42 @@ defmodule BackRfWeb.PhotoController do
 
   def index(conn, _params) do
     photos = Random.list_photos()
-    render(conn, "index.json", photos: photos)
+    images = Enum.map(photos, fn val -> [] ++ val.image end)
+    conn
+    |> put_resp_content_type("image/png")
+    |> send_resp(200, images)
+    # |> render("index.json", photos: photos)
   end
 
-  def create(conn, %{"photo" => photo_params}) do
-    with {:ok, %Photo{} = photo} <- Random.create_photo(photo_params) do
-      conn
-      |> put_status(:created)
-      |> put_resp_header("location", Routes.photo_path(conn, :show, photo))
-      |> render("show.json", photo: photo)
+  def get_length(conn, _params) do
+    photos = Random.list_photos()
+    list_length = length(photos)
+
+    conn
+    |> put_status(200)
+    |> json(list_length)
+  end
+
+  def create(conn, %{"image" => photo_params}) do
+    if(File.exists?(photo_params.path)) do
+      case File.read(photo_params.path) do
+        {:ok, body} -> data = IO.iodata_to_binary(body)
+        with {:ok, %Photo{} = photo} <- Random.create_photo(%{"image" => data}) do
+          conn
+          |> put_resp_content_type("image/png")
+          |> send_resp(200, photo.image)
+        end
+        {:error, posix} -> IO.inspect(item: posix, label: "POSIX")
+      end
     end
   end
 
   def show(conn, %{"id" => id}) do
     photo = Random.get_photo!(id)
-    render(conn, "show.json", photo: photo)
+    conn
+    |> put_resp_content_type("image/png")
+    |> send_resp(200, photo.image)
+    # render(conn, "show.json", photo: photo)
   end
 
   def update(conn, %{"id" => id, "photo" => photo_params}) do

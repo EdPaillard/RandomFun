@@ -5,11 +5,11 @@ RUN apt-get update && \
 
 WORKDIR /app
 
-RUN flutter create .
-COPY pubspec.lock pubspec.yaml ./
+# RUN flutter create .
+# COPY pubspec.lock pubspec.yaml ./
+# COPY lib test fonts images ./
+COPY . .
 RUN flutter pub get
-COPY lib .
-COPY test .
 RUN flutter build apk
 
 FROM nginx:stable-alpine as production-stage

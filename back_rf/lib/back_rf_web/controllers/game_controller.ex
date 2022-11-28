@@ -8,7 +8,10 @@ defmodule BackRfWeb.GameController do
 
   def index(conn, _params) do
     games = Random.list_games()
-    render(conn, "index.json", games: games)
+    conn
+    |> put_status(200)
+    |> json(games)
+    # render(conn, "index.json", games: games)
   end
 
   def create(conn, %{"game" => game_params}) do
@@ -27,9 +30,10 @@ defmodule BackRfWeb.GameController do
 
   def update(conn, %{"id" => id, "game" => game_params}) do
     game = Random.get_game!(id)
-
-    with {:ok, %Game{} = game} <- Random.update_game(game, game_params) do
-      render(conn, "show.json", game: game)
+    with {:ok, %Game{} = game} <- Random.update_game(game, %{"game" => game_params}) do
+      conn
+      |> put_status(200)
+      |> json(game)
     end
   end
 

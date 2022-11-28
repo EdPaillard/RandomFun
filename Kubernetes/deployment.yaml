@@ -1,0 +1,104 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: randomfun-postgres
+  labels:
+    app: randomfun-postgres
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: randomfun-postgres
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: randomfun-postgres
+    spec:
+      containers:
+      - name: randomfun-postgres
+        image: postgres:14.5
+        ports:
+          - containerPort: 5555
+        env:
+          - name: POSTGRES_USER
+            valueFrom:
+              secretKeyRef:
+                name: randomfun-secret
+                key: POSTGRES_USER
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: randomfun-secret
+                key: POSTGRES_PASSWORD
+          - name: POSTGRES_HOST
+            valueFrom:
+              configMapKeyRef:
+                name: randomfun-configmap
+                key: POSTGRES_HOST
+          - name: POSTGRES_DB
+            valueFrom:
+              configMapKeyRef:
+                name: randomfun-configmap
+                key: POSTGRES_DB
+          - name: POSTGRES_PORT
+            valueFrom:
+              configMapKeyRef:
+                name: randomfun-configmap
+                key: POSTGRES_PORT
+        volumeMounts:
+        - mountPath: "/var/lib/mysql-files/randomfun"
+          name: randomfun-pv
+      volumes:
+        - name: randomfun-pv
+          persistentVolumeClaim:
+            claimName: randomfun-pvc
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: randomfun-backend
+  labels:
+    app: randomfun-backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: randomfun-backend
+  template:
+    metadata:
+      labels:
+        app: randomfun-backend
+    spec:
+      containers:
+        - name: randomfun-backend
+          image: 162.19.66.30:7000/randomfun-backend:kube-v0.1
+          ports:
+            - containerPort: 7777
+          env:
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: randomfun-secret
+                  key: POSTGRES_USER
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: randomfun-secret
+                  key: POSTGRES_PASSWORD
+            - name: POSTGRES_HOST
+              valueFrom:
+                configMapKeyRef:
+                  name: randomfun-configmap
+                  key: POSTGRES_HOST
+            - name: POSTGRES_DB
+              valueFrom:
+                configMapKeyRef:
+                  name: randomfun-configmap
+                  key: POSTGRES_DB
+            - name: POSTGRES_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: randomfun-configmap
+                  key: POSTGRES_PORT

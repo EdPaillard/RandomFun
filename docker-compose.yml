@@ -1,11 +1,11 @@
 version: "3.8"
 services:
-  client:
-    build:
-      dockerfile: Dockerfile
-      context: "./front_rf"
-    ports:
-      - "8087:8087"
+  # client:
+  #   build:
+  #     dockerfile: Dockerfile
+  #     context: "./front_rf"
+  #   ports:
+  #     - "8087:8087"
   server:
     build:
       dockerfile: Dockerfile
@@ -28,10 +28,11 @@ services:
       POSTGRES_USER: $POSTGRES_USER
       POSTGRES_PASSWORD: $POSTGRES_PASSWORD
       POSTGRES_DB: $POSTGRES_DB
-      POSTGRES_PORT: $POSTGRES_PORT
     ports:
-      - 5477:5477
+      - 5555:5432
     volumes:
-      - psqlrfdb_data:/var/lib/postgresql/data/pg_rfdata
+      - psqlrfdb_data:/var/lib/postgresql/pg_rfdata
+      - psqlrfdb_dump:/docker-entrypoint-initdb.d
 volumes:
   psqlrfdb_data:
+  psqlrfdb_dump:

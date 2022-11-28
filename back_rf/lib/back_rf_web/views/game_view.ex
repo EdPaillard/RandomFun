@@ -14,8 +14,8 @@ defmodule BackRfWeb.GameView do
     %{
       id: game.id,
       name: game.name,
-      image: game.image,
-      description: game.description
+      description: game.description,
+      images_id: game.images_id
     }
   end
 end

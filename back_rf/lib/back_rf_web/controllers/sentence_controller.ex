@@ -11,7 +11,7 @@ defmodule BackRfWeb.SentenceController do
     render(conn, "index.json", sentences: sentences)
   end
 
-  def create(conn, %{"sentence" => sentence_params}) do
+  def create(conn, %{"sentences" => sentence_params}) do
     with {:ok, %Sentence{} = sentence} <- Random.create_sentence(sentence_params) do
       conn
       |> put_status(:created)
@@ -25,7 +25,7 @@ defmodule BackRfWeb.SentenceController do
     render(conn, "show.json", sentence: sentence)
   end
 
-  def update(conn, %{"id" => id, "sentence" => sentence_params}) do
+  def update(conn, %{"id" => id, "sentences" => sentence_params}) do
     sentence = Random.get_sentence!(id)
 
     with {:ok, %Sentence{} = sentence} <- Random.update_sentence(sentence, sentence_params) do
