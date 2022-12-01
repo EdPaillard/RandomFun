@@ -14,6 +14,7 @@ defmodule BackRfWeb.Router do
       resources "/", PhotoController, except: [:new, :edit]
       get "/list/length", PhotoController, :get_length
     end
+    resources "/calendar", CalendarController, except: [:new, :edit]
   end
 
   # Enables LiveDashboard only for development

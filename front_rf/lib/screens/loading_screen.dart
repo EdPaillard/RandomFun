@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:front_rf/screens/result_screen.dart';
 import 'package:front_rf/services/fungetter.dart';
-import 'package:front_rf/services/networking.dart';
 
 class LoadingScreen extends StatefulWidget {
   LoadingScreen({Key? key}) : super(key: key);
@@ -22,57 +21,36 @@ class _LoadingScreenState extends State<LoadingScreen> {
   }
 
   void getRandomness() async {
-    try {
-      FunGetter funGetter = FunGetter();
-      var games = await funGetter.getGames();
-      print(games);
+    // try {
+    FunGetter funGetter = FunGetter();
+    var games = await funGetter.getGames();
 
-      int gameLength = games.length;
-      print(gameLength);
-      int randomGameIndex = Random().nextInt(gameLength);
-      print(randomGameIndex);
-      print(games[randomGameIndex]);
+    int gameLength = games.length;
+    int randomGameIndex = Random().nextInt(gameLength);
 
-      int gameId = games[randomGameIndex]["id"];
-      int gameImageId = games[randomGameIndex]["images_id"];
-      print(gameId);
+    int gameId = games[randomGameIndex]["id"];
+    int gameImageId = games[randomGameIndex]["images_id"];
 
-      var gameImage = await funGetter.getGameImage(gameImageId);
+    var gameImage = await funGetter.getGameImage(gameImageId);
 
-      List<dynamic> sentences = await funGetter.getSentences();
-      print(sentences);
-      int sentencesLength = sentences.length;
-      int randomSentenceIndex = Random().nextInt(sentencesLength);
+    List<dynamic> sentences = await funGetter.getSentences();
+    int sentencesLength = sentences.length;
+    int randomSentenceIndex = Random().nextInt(sentencesLength);
 
-      var oneSentence = sentences[randomSentenceIndex];
-      print(oneSentence);
-      int photoId = await funGetter.getPhotosLength();
-      print(photoId is int);
-      print(oneSentence["sentence"]);
-      print(games[0]["goals"]);
-      print(games[0]["materiel"]);
-      var photo = await funGetter.getPhoto(photoId);
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: ((context) => ResultScreen(
-                game: games[0],
-                gameImage: gameImage,
-                photo: photo,
-                sentence: oneSentence,
-              )),
-        ),
-      );
-    } catch (e) {
-      print("Hello !");
-      setState(() {
-        conn = false;
-      });
-      print(conn);
-      AlertDialog(
-        content: Text("$e: Oops, something went wrong"),
-      );
-    }
+    var oneSentence = sentences[randomSentenceIndex];
+    int photoId = await funGetter.getPhotosLength();
+    var photo = await funGetter.getPhoto(photoId);
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: ((context) => ResultScreen(
+              game: games[gameLength - 1],
+              gameImage: gameImage,
+              photo: photo,
+              sentence: oneSentence,
+            )),
+      ),
+    );
   }
 
   int generateRandomIndex(List list) {

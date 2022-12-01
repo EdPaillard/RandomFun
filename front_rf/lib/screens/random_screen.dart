@@ -8,6 +8,25 @@ class RandomScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.calendar_month),
+            tooltip: 'Calendrier',
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: ((context) => const CalendarScreen()),
+                ),
+              );
+            },
+          ),
+        ],
+        automaticallyImplyLeading: false,
+        backgroundColor: const Color.fromARGB(255, 255, 200, 30),
+        title: const Text("❤️  RandomFun"),
+      ),
       body: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
@@ -19,42 +38,33 @@ class RandomScreen extends StatelessWidget {
         child: SafeArea(
           child: Column(
             children: <Widget>[
-              Align(
-                alignment: Alignment.topRight,
-                child: TextButton(
+              Padding(
+                padding: const EdgeInsets.all(30.0),
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.all(10),
+                    backgroundColor: const Color.fromARGB(255, 255, 200, 30),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30.0),
+                    ),
+                  ),
                   onPressed: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: ((context) => const CalendarScreen()),
+                        builder: ((context) => LoadingScreen()),
                       ),
                     );
                   },
-                  child: const Icon(
-                    Icons.calendar_month,
-                    size: 50.0,
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-              ElevatedButton(
-                style:
-                    ElevatedButton.styleFrom(backgroundColor: Colors.blue[50]),
-                onPressed: () {
-                  print('object');
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: ((context) => LoadingScreen()),
+                  child: const Text(
+                    'Générateur aléatoire d\'amour',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 30.0,
+                      fontFamily: 'Pacifico',
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
                     ),
-                  );
-                },
-                child: const Text(
-                  'Générateur aléatoire d\'amour',
-                  style: TextStyle(
-                    fontSize: 30.0,
-                    fontFamily: 'Spartan MB',
-                    color: Colors.black,
                   ),
                 ),
               )

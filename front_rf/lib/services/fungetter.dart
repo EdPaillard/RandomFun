@@ -1,6 +1,7 @@
+import 'package:flutter/foundation.dart';
 import 'package:front_rf/services/networking.dart';
 
-const backendUrl = 'http://localhost:7777/api';
+const backendUrl = 'http://162.19.66.30:7777/api';
 
 class FunGetter {
   Future<List<dynamic>> getGames() async {
@@ -24,7 +25,6 @@ class FunGetter {
     NetworkHelper networkHelper = NetworkHelper(url);
 
     var data = await networkHelper.getDatas();
-    print(data);
     return data["data"];
   }
 
@@ -41,6 +41,16 @@ class FunGetter {
     NetworkHelper networkHelper = NetworkHelper(url);
 
     var data = await networkHelper.getPhoto();
+    return data;
+  }
+
+  Future<Map<String, bool>> postCalendar(
+      String gameName, Uint8List photo) async {
+    print('INTO FUNGETTER $gameName');
+    Uri url = Uri.parse('$backendUrl/calendar');
+    NetworkHelper networkHelper = NetworkHelper(url);
+    print('BackFromNWHelper');
+    var data = await networkHelper.postData(gameName, photo);
     return data;
   }
 }

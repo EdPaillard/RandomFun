@@ -16,6 +16,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   http: ^0.13.5
   flutter_spinkit: ^5.1.0
+  syncfusion_flutter_calendar: ^20.3.59
 
 dev_dependencies:
   flutter_test:
@@ -30,7 +31,7 @@ flutter:
 
   assets:
     - images/random_background.jpg
-  #   - images/a_dot_ham.jpeg
+    - images/background.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
@@ -43,6 +44,18 @@ flutter:
     - family: Spartan
       fonts:
         - asset: fonts/SpartanMB-Black.otf
+    - family: Collection
+      fonts:
+        - asset: fonts/CollectionNewStyle.otf
+    - family: SourceSans
+      fonts:
+        - asset: fonts/SourceSansPro-Regular.ttf
+    - family: Captain
+      fonts:
+        - asset: fonts/American-Captain.otf
+    - family: Pacifico
+      fonts:
+        - asset: fonts/Pacifico.ttf
     
   #
   # For details regarding fonts from package dependencies,

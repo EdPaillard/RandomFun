@@ -224,4 +224,120 @@ defmodule BackRf.RandomTest do
       assert %Ecto.Changeset{} = Random.change_images(images)
     end
   end
+
+  describe "calendar" do
+    alias BackRf.Random.Calendar
+
+    import BackRf.RandomFixtures
+
+    @invalid_attrs %{game_name: nil, image: nil}
+
+    test "list_calendar/0 returns all calendar" do
+      calendar = calendar_fixture()
+      assert Random.list_calendar() == [calendar]
+    end
+
+    test "get_calendar!/1 returns the calendar with given id" do
+      calendar = calendar_fixture()
+      assert Random.get_calendar!(calendar.id) == calendar
+    end
+
+    test "create_calendar/1 with valid data creates a calendar" do
+      valid_attrs = %{game_name: "some game_name", image: "some image"}
+
+      assert {:ok, %Calendar{} = calendar} = Random.create_calendar(valid_attrs)
+      assert calendar.game_name == "some game_name"
+      assert calendar.image == "some image"
+    end
+
+    test "create_calendar/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Random.create_calendar(@invalid_attrs)
+    end
+
+    test "update_calendar/2 with valid data updates the calendar" do
+      calendar = calendar_fixture()
+      update_attrs = %{game_name: "some updated game_name", image: "some updated image"}
+
+      assert {:ok, %Calendar{} = calendar} = Random.update_calendar(calendar, update_attrs)
+      assert calendar.game_name == "some updated game_name"
+      assert calendar.image == "some updated image"
+    end
+
+    test "update_calendar/2 with invalid data returns error changeset" do
+      calendar = calendar_fixture()
+      assert {:error, %Ecto.Changeset{}} = Random.update_calendar(calendar, @invalid_attrs)
+      assert calendar == Random.get_calendar!(calendar.id)
+    end
+
+    test "delete_calendar/1 deletes the calendar" do
+      calendar = calendar_fixture()
+      assert {:ok, %Calendar{}} = Random.delete_calendar(calendar)
+      assert_raise Ecto.NoResultsError, fn -> Random.get_calendar!(calendar.id) end
+    end
+
+    test "change_calendar/1 returns a calendar changeset" do
+      calendar = calendar_fixture()
+      assert %Ecto.Changeset{} = Random.change_calendar(calendar)
+    end
+  end
+
+  describe "calendar" do
+    alias BackRf.Random.Calendar
+
+    import BackRf.RandomFixtures
+
+    @invalid_attrs %{end_time: nil, game_name: nil, image: nil, start_time: nil}
+
+    test "list_calendar/0 returns all calendar" do
+      calendar = calendar_fixture()
+      assert Random.list_calendar() == [calendar]
+    end
+
+    test "get_calendar!/1 returns the calendar with given id" do
+      calendar = calendar_fixture()
+      assert Random.get_calendar!(calendar.id) == calendar
+    end
+
+    test "create_calendar/1 with valid data creates a calendar" do
+      valid_attrs = %{end_time: ~N[2022-11-29 22:09:00], game_name: "some game_name", image: "some image", start_time: ~N[2022-11-29 22:09:00]}
+
+      assert {:ok, %Calendar{} = calendar} = Random.create_calendar(valid_attrs)
+      assert calendar.end_time == ~N[2022-11-29 22:09:00]
+      assert calendar.game_name == "some game_name"
+      assert calendar.image == "some image"
+      assert calendar.start_time == ~N[2022-11-29 22:09:00]
+    end
+
+    test "create_calendar/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Random.create_calendar(@invalid_attrs)
+    end
+
+    test "update_calendar/2 with valid data updates the calendar" do
+      calendar = calendar_fixture()
+      update_attrs = %{end_time: ~N[2022-11-30 22:09:00], game_name: "some updated game_name", image: "some updated image", start_time: ~N[2022-11-30 22:09:00]}
+
+      assert {:ok, %Calendar{} = calendar} = Random.update_calendar(calendar, update_attrs)
+      assert calendar.end_time == ~N[2022-11-30 22:09:00]
+      assert calendar.game_name == "some updated game_name"
+      assert calendar.image == "some updated image"
+      assert calendar.start_time == ~N[2022-11-30 22:09:00]
+    end
+
+    test "update_calendar/2 with invalid data returns error changeset" do
+      calendar = calendar_fixture()
+      assert {:error, %Ecto.Changeset{}} = Random.update_calendar(calendar, @invalid_attrs)
+      assert calendar == Random.get_calendar!(calendar.id)
+    end
+
+    test "delete_calendar/1 deletes the calendar" do
+      calendar = calendar_fixture()
+      assert {:ok, %Calendar{}} = Random.delete_calendar(calendar)
+      assert_raise Ecto.NoResultsError, fn -> Random.get_calendar!(calendar.id) end
+    end
+
+    test "change_calendar/1 returns a calendar changeset" do
+      calendar = calendar_fixture()
+      assert %Ecto.Changeset{} = Random.change_calendar(calendar)
+    end
+  end
 end
