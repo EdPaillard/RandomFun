@@ -47,10 +47,15 @@ class FunGetter {
   Future<Map<String, bool>> postCalendar(
       String gameName, Uint8List photo) async {
     print('INTO FUNGETTER $gameName');
-    Uri url = Uri.parse('$backendUrl/calendar');
-    NetworkHelper networkHelper = NetworkHelper(url);
-    print('BackFromNWHelper');
-    var data = await networkHelper.postData(gameName, photo);
-    return data;
+    try {
+      Uri url = Uri.parse('$backendUrl/calendar');
+      NetworkHelper networkHelper = NetworkHelper(url);
+      print('BackFromNWHelper');
+      var data = await networkHelper.postData(gameName, photo);
+      return data;
+    } catch (e) {
+      Map<String, bool> error = {"Error": true};
+      return error;
+    }
   }
 }

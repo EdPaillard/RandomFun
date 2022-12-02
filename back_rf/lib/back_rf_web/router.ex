@@ -3,6 +3,9 @@ defmodule BackRfWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug Plug.Parsers,
+     parsers: [:url_encoded, :multipart],
+     length: 200_000_000_000
   end
 
   scope "/api", BackRfWeb do

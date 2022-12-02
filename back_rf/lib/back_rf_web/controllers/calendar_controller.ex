@@ -11,7 +11,8 @@ defmodule BackRfWeb.CalendarController do
     render(conn, "index.json", calendar: calendar)
   end
 
-  def create(conn, %{"calendar" => calendar_params}) do
+  def create(conn, %{"game_name" => gameName, "start_time" => startTime, "end_time" => endTime, "image" => image}) do
+    calendar_params = %{"game_name" => gameName, "start_time" => startTime, "end_time" => endTime, "image" => image}
     with {:ok, %Calendar{} = calendar} <- Random.create_calendar(calendar_params) do
       conn
       |> put_status(:created)

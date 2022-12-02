@@ -32,10 +32,11 @@ class NetworkHelper {
     DateTime endTime = DateTime.now().add(const Duration(hours: 2));
     Map<String, dynamic> body = {
       "game_name": gameName,
-      "image": base64.encode(photo),
-      "start_time": startTime,
-      "end_time": endTime
+      "image": "test",
+      "start_time": startTime.toString(),
+      "end_time": endTime.toString()
     };
+    //base64.encode(photo)
     print('NWHelper $body');
     http.Response response = await http.post(url, body: body);
     print('NWHelper ${response.body}');
