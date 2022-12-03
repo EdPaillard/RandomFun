@@ -39,13 +39,15 @@ class _LoadingScreenState extends State<LoadingScreen> {
     int randomSentenceIndex = Random().nextInt(sentencesLength);
 
     var oneSentence = sentences[randomSentenceIndex];
-    int photoId = await funGetter.getPhotosLength();
-    var photo = await funGetter.getPhoto(photoId);
+    int photoLength = await funGetter.getPhotosLength();
+    int randomPhotoIndex = Random().nextInt(photoLength);
+    var photo = await funGetter.getPhoto(randomPhotoIndex);
+    print(photo is String);
     Navigator.push(
       context,
       MaterialPageRoute(
         builder: ((context) => ResultScreen(
-              game: games[gameLength - 1],
+              game: games[randomGameIndex],
               gameImage: gameImage,
               photo: photo,
               sentence: oneSentence,

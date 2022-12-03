@@ -78,20 +78,20 @@ defmodule BackRf.RandomFixtures do
     calendar
   end
 
-  @doc """
-  Generate a calendar.
-  """
-  def calendar_fixture(attrs \\ %{}) do
-    {:ok, calendar} =
-      attrs
-      |> Enum.into(%{
-        end_time: ~N[2022-11-29 22:09:00],
-        game_name: "some game_name",
-        image: "some image",
-        start_time: ~N[2022-11-29 22:09:00]
-      })
-      |> BackRf.Random.create_calendar()
+  # @doc """
+  # Generate a calendar.
+  # """
+  # def calendar_fixture(attrs \\ %{}) do
+  #   {:ok, calendar} =
+  #     attrs
+  #     |> Enum.into(%{
+  #       end_time: ~N[2022-11-29 22:09:00],
+  #       game_name: "some game_name",
+  #       image: "some image",
+  #       start_time: ~N[2022-11-29 22:09:00]
+  #     })
+  #     |> BackRf.Random.create_calendar()
 
-    calendar
-  end
+  #   calendar
+  # end
 end

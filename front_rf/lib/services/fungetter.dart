@@ -33,6 +33,7 @@ class FunGetter {
     NetworkHelper networkHelper = NetworkHelper(url);
 
     var data = await networkHelper.getDatas();
+    print(data);
     return data;
   }
 

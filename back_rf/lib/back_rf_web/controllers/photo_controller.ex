@@ -16,12 +16,13 @@ defmodule BackRfWeb.PhotoController do
   end
 
   def get_length(conn, _params) do
-    photos = Random.list_photos()
-    list_length = length(photos)
+    photos_length = Random.get_photo_length()
+    # photos = Random.list_photos()
+    # list_length = length(photos)
 
     conn
     |> put_status(200)
-    |> json(list_length)
+    |> json(photos_length)
   end
 
   def create(conn, %{"image" => photo_params}) do

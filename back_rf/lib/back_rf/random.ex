@@ -213,6 +213,10 @@ defmodule BackRf.Random do
     Repo.all(Photo)
   end
 
+  def get_photo_length do
+    Repo.aggregate(Photo, :count, :id)
+  end
+
   @doc """
   Gets a single photo.
 

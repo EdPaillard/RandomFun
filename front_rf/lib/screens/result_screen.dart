@@ -73,8 +73,9 @@ class _ResultScreenState extends State<ResultScreen> {
     int randomSentenceIndex = Random().nextInt(sentencesLength);
 
     var oneSentence = sentences[randomSentenceIndex];
-    int photoId = await funGetter.getPhotosLength();
-    var photo = await funGetter.getPhoto(photoId);
+    int photoLength = await funGetter.getPhotosLength();
+    int randomPhotoIndex = Random().nextInt(photoLength) + 1;
+    var photo = await funGetter.getPhoto(randomPhotoIndex);
     setState(() {
       gameName = games[randomGameIndex]['name'];
       gamePicture = gameImage;
