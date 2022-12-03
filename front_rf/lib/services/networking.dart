@@ -41,7 +41,7 @@ class NetworkHelper {
     http.Response response = await http.post(url, body: body);
     print('NWHelper ${response.body}');
 
-    if (response.statusCode == 200) {
+    if (response.statusCode == 201) {
       Map<String, bool> result = {"Success": true};
       return result;
     } else {

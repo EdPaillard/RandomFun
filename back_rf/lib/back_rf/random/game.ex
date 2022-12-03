@@ -18,6 +18,6 @@ defmodule BackRf.Random.Game do
   def changeset(game, attrs) do
     game
     |> cast(attrs, [:name, :description, :materiel, :goals, :conclusion, :images_id])
-    |> validate_required([:name, :description, :images_id])
+    |> validate_required([:name, :description])
   end
 end

@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:front_rf/screens/result_screen.dart';
 import 'package:front_rf/services/fungetter.dart';
+import 'package:front_rf/utilities/constants.dart';
 
 class LoadingScreen extends StatefulWidget {
   LoadingScreen({Key? key}) : super(key: key);
@@ -61,15 +62,16 @@ class _LoadingScreenState extends State<LoadingScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+        backgroundColor: bgColor,
         body: Center(
-      child: conn
-          ? const SpinKitDoubleBounce(
-              color: Colors.white,
-              size: 100.0,
-            )
-          : const AlertDialog(
-              content: Text("Oops, something went wrong"),
-            ),
-    ));
+          child: conn
+              ? const SpinKitDoubleBounce(
+                  color: Colors.white,
+                  size: 100.0,
+                )
+              : const AlertDialog(
+                  content: Text("Oops, something went wrong"),
+                ),
+        ));
   }
 }

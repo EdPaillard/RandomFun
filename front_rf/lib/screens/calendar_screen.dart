@@ -41,18 +41,21 @@ class _CalendarScreenState extends State<CalendarScreen> {
             trailingDatesBackgroundColor: Color.fromARGB(115, 255, 190, 0),
           ),
         ),
+        resourceViewHeaderBuilder: resourceBuilder,
+        viewHeaderHeight: 40,
       ),
     );
   }
 }
 
-class _AppointmentDataSource extends CalendarDataSource {
-  _AppointmentDataSource(List<Appointment> source) {
+class _DataSource extends CalendarDataSource {
+  _DataSource(List<Appointment> source, List<CalendarResource> resourceColl) {
     appointments = source;
+    resources = resourceColl;
   }
 }
 
-_AppointmentDataSource _getCalendarDataSource() {
+_DataSource _getCalendarDataSource() {
   List<Appointment> appointments = <Appointment>[];
   appointments.add(
     Appointment(
@@ -65,6 +68,41 @@ _AppointmentDataSource _getCalendarDataSource() {
       color: Colors.blue.shade200,
     ),
   );
+  List<CalendarResource> resourceColl = <CalendarResource>[];
+  resourceColl.add(CalendarResource(
+    displayName: 'baby',
+    image: const AssetImage('images/background.jpg'),
+    id: '0001',
+    color: Colors.red,
+  ));
 
-  return _AppointmentDataSource(appointments);
+  return _DataSource(appointments, resourceColl);
+}
+
+Widget resourceBuilder(
+    BuildContext context, ResourceViewHeaderDetails details) {
+  print(details);
+  print('HEYYYY');
+  if (details.resource.image != null) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        CircleAvatar(
+            backgroundImage: details.resource.image,
+            backgroundColor: details.resource.color),
+        Center(
+            child: Text(
+          details.resource.displayName,
+          textAlign: TextAlign.center,
+        )),
+      ],
+    );
+  } else {
+    return Container(
+      color: details.resource.color,
+      child: Text(details.resource.displayName),
+    );
+  }
 }

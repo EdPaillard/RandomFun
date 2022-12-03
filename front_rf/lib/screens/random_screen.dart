@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:front_rf/screens/calendar_screen.dart';
+import 'package:front_rf/utilities/constants.dart';
 import 'package:front_rf/screens/loading_screen.dart';
 
 class RandomScreen extends StatelessWidget {
@@ -9,23 +9,26 @@ class RandomScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.calendar_month),
-            tooltip: 'Calendrier',
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: ((context) => const CalendarScreen()),
-                ),
-              );
-            },
-          ),
-        ],
+        // actions: [
+        //   IconButton(
+        //     icon: const Icon(Icons.calendar_month),
+        //     tooltip: 'Calendrier',
+        //     onPressed: () {
+        //       Navigator.push(
+        //         context,
+        //         MaterialPageRoute(
+        //           builder: ((context) => const CalendarScreen()),
+        //         ),
+        //       );
+        //     },
+        //   ),
+        // ],
         automaticallyImplyLeading: false,
-        backgroundColor: const Color.fromARGB(255, 255, 200, 30),
-        title: const Text("❤️  RandomFun"),
+        backgroundColor: headerColor,
+        title: const Text(
+          "❤️  RandomFun",
+          style: TextStyle(color: drawColor),
+        ),
       ),
       body: Container(
         decoration: const BoxDecoration(
@@ -39,11 +42,11 @@ class RandomScreen extends StatelessWidget {
           child: Column(
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.all(30.0),
+                padding: const EdgeInsets.fromLTRB(30, 120, 30, 30),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     padding: const EdgeInsets.all(10),
-                    backgroundColor: const Color.fromARGB(255, 255, 200, 30),
+                    backgroundColor: headerColor,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(30.0),
                     ),
@@ -63,7 +66,7 @@ class RandomScreen extends StatelessWidget {
                       fontSize: 30.0,
                       fontFamily: 'Pacifico',
                       fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                      color: drawColor,
                     ),
                   ),
                 ),

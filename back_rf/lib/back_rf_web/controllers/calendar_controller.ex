@@ -8,7 +8,9 @@ defmodule BackRfWeb.CalendarController do
 
   def index(conn, _params) do
     calendar = Random.list_calendar()
-    render(conn, "index.json", calendar: calendar)
+    conn
+    |> put_status(200)
+    |> json(calendar)
   end
 
   def create(conn, %{"game_name" => gameName, "start_time" => startTime, "end_time" => endTime, "image" => image}) do
