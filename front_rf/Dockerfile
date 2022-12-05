@@ -14,5 +14,6 @@ RUN flutter build apk
 
 FROM nginx:stable-alpine as production-stage
 COPY --from=build /app/build/app/outputs/apk/release/app-release.apk /usr/share/nginx/html/iloveu.apk
-EXPOSE 80
+COPY ./default.conf /etc/nginx/conf.d/default.conf
+EXPOSE 8089
 CMD ["nginx", "-g", "daemon off;"]
