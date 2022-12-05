@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:math';
 
 import 'package:flutter/foundation.dart';
@@ -32,7 +33,7 @@ class _ResultScreenState extends State<ResultScreen> {
   late String gameDescription = widget.game['description'];
   late String gameConclusion = widget.game['conclusion'];
   late Uint8List childPhoto = widget.photo;
-  late String sentence = widget.sentence["sentence"];
+  late String sentences = widget.sentence["sentence"];
   late String author = widget.sentence["author"];
   bool waiting = false;
   bool collapsed = true;
@@ -62,6 +63,10 @@ class _ResultScreenState extends State<ResultScreen> {
     var photo = await funGetter.getRandomPhoto();
     var game = await funGetter.getRandomGame();
     var sentence = await funGetter.getRandomSentence();
+    print(sentence['author']);
+    print(sentence['author'] is String);
+    print(author);
+    print(author is String);
     if (game["images_id"] != null) {
       int gameImageId = game["images_id"];
       var gameImage = await funGetter.getGameImage(gameImageId);
@@ -73,8 +78,8 @@ class _ResultScreenState extends State<ResultScreen> {
         gameConclusion = game['conclusion'];
         gameGoals = game['goals'];
         childPhoto = photo;
-        sentence = sentence['sentence'];
-        author = sentence['author'];
+        sentences = sentence['sentence'] as String;
+        author = sentence['author'] as String;
         waiting = false;
         hasPicture = true;
       });
@@ -86,7 +91,7 @@ class _ResultScreenState extends State<ResultScreen> {
         gameConclusion = game['conclusion'];
         gameGoals = game['goals'];
         childPhoto = photo;
-        sentence = sentence['sentence'];
+        sentences = sentence['sentence'];
         author = sentence['author'];
         waiting = false;
         hasPicture = false;
@@ -349,7 +354,7 @@ class _ResultScreenState extends State<ResultScreen> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Text(
-                        sentence,
+                        sentences,
                         textAlign: TextAlign.justify,
                         style: const TextStyle(
                           color: cream,

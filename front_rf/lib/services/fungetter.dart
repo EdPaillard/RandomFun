@@ -17,7 +17,6 @@ class FunGetter {
     NetworkHelper networkHelper = NetworkHelper(url);
 
     var data = await networkHelper.getDatas();
-    print(data);
     return data;
   }
 
@@ -51,7 +50,6 @@ class FunGetter {
     NetworkHelper networkHelper = NetworkHelper(url);
 
     var data = await networkHelper.getDatas();
-    print(data);
     return data;
   }
 
@@ -68,7 +66,6 @@ class FunGetter {
     NetworkHelper networkHelper = NetworkHelper(url);
 
     var data = await networkHelper.getPhoto();
-    print(data);
     return data;
   }
 

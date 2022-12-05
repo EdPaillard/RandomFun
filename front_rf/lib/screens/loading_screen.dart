@@ -25,9 +25,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
     // try {
     FunGetter funGetter = FunGetter();
     var photo = await funGetter.getRandomPhoto();
-    print(photo);
     var game = await funGetter.getRandomGame();
-    print(game);
     var sentence = await funGetter.getRandomSentence();
     print(sentence);
     if (game["images_id"] != null) {
