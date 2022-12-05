@@ -59,45 +59,35 @@ class _ResultScreenState extends State<ResultScreen> {
       waiting = true;
     });
     FunGetter funGetter = FunGetter();
-    var games = await funGetter.getGames();
-
-    int gameLength = games.length;
-    int randomGameIndex = Random().nextInt(gameLength);
-
-    List<dynamic> sentences = await funGetter.getSentences();
-    int sentencesLength = sentences.length;
-    int randomSentenceIndex = Random().nextInt(sentencesLength - 1) + 1;
-
-    var oneSentence = sentences[randomSentenceIndex];
-    int photoLength = await funGetter.getPhotosLength();
-    int randomPhotoIndex = Random().nextInt(photoLength - 1) + 1;
-    var photo = await funGetter.getPhoto(randomPhotoIndex);
-    if (games[randomGameIndex]["images_id"] != null) {
-      int gameImageId = games[randomGameIndex]["images_id"];
+    var photo = await funGetter.getRandomPhoto();
+    var game = await funGetter.getRandomGame();
+    var sentence = await funGetter.getRandomSentence();
+    if (game["images_id"] != null) {
+      int gameImageId = game["images_id"];
       var gameImage = await funGetter.getGameImage(gameImageId);
       setState(() {
-        gameName = games[randomGameIndex]['name'];
+        gameName = game['name'];
         gamePicture = gameImage;
-        gameMateriel = games[randomGameIndex]['materiel'];
-        gameDescription = games[randomGameIndex]['description'];
-        gameConclusion = games[randomGameIndex]['conclusion'];
-        gameGoals = games[randomGameIndex]['goals'];
+        gameMateriel = game['materiel'];
+        gameDescription = game['description'];
+        gameConclusion = game['conclusion'];
+        gameGoals = game['goals'];
         childPhoto = photo;
-        sentence = oneSentence['sentence'];
-        author = oneSentence['author'];
+        sentence = sentence['sentence'];
+        author = sentence['author'];
         waiting = false;
         hasPicture = true;
       });
     } else {
       setState(() {
-        gameName = games[randomGameIndex]['name'];
-        gameMateriel = games[randomGameIndex]['materiel'];
-        gameDescription = games[randomGameIndex]['description'];
-        gameConclusion = games[randomGameIndex]['conclusion'];
-        gameGoals = games[randomGameIndex]['goals'];
+        gameName = game['name'];
+        gameMateriel = game['materiel'];
+        gameDescription = game['description'];
+        gameConclusion = game['conclusion'];
+        gameGoals = game['goals'];
         childPhoto = photo;
-        sentence = oneSentence['sentence'];
-        author = oneSentence['author'];
+        sentence = sentence['sentence'];
+        author = sentence['author'];
         waiting = false;
         hasPicture = false;
       });

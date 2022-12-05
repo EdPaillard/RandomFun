@@ -24,30 +24,23 @@ class _LoadingScreenState extends State<LoadingScreen> {
   void getRandomness() async {
     // try {
     FunGetter funGetter = FunGetter();
-    int photoLength = await funGetter.getPhotosLength();
-    int randomPhotoIndex = Random().nextInt(photoLength - 1) + 1;
-    var photo = await funGetter.getPhoto(randomPhotoIndex);
-    var games = await funGetter.getGames();
-
-    int gameLength = games.length;
-    int randomGameIndex = Random().nextInt(gameLength);
-
-    List<dynamic> sentences = await funGetter.getSentences();
-    int sentencesLength = sentences.length;
-    int randomSentenceIndex = Random().nextInt(sentencesLength - 1) + 1;
-
-    var oneSentence = sentences[randomSentenceIndex];
-    if (games[randomGameIndex]["images_id"] != null) {
-      int gameImageId = games[randomGameIndex]["images_id"];
+    var photo = await funGetter.getRandomPhoto();
+    print(photo);
+    var game = await funGetter.getRandomGame();
+    print(game);
+    var sentence = await funGetter.getRandomSentence();
+    print(sentence);
+    if (game["images_id"] != null) {
+      int gameImageId = game["images_id"];
       var gameImage = await funGetter.getGameImage(gameImageId);
       Navigator.push(
         context,
         MaterialPageRoute(
           builder: ((context) => ResultScreen(
-                game: games[randomGameIndex],
+                game: game,
                 gameImage: gameImage,
                 photo: photo,
-                sentence: oneSentence,
+                sentence: sentence,
               )),
         ),
       );
@@ -56,9 +49,9 @@ class _LoadingScreenState extends State<LoadingScreen> {
         context,
         MaterialPageRoute(
           builder: ((context) => ResultScreen(
-                game: games[randomGameIndex],
+                game: game,
                 photo: photo,
-                sentence: oneSentence,
+                sentence: sentence,
               )),
         ),
       );
