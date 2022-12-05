@@ -10,7 +10,7 @@ class ResultScreen extends StatefulWidget {
   const ResultScreen(
       {Key? key,
       required this.game,
-      required this.gameImage,
+      this.gameImage,
       required this.sentence,
       required this.photo})
       : super(key: key);
@@ -36,16 +36,17 @@ class _ResultScreenState extends State<ResultScreen> {
   late String author = widget.sentence["author"];
   bool waiting = false;
   bool collapsed = true;
+  late bool hasPicture;
 
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   gameName = widget.game['name'];
-  //   childPhoto = widget.photo;
-  //   sentence = widget.sentence["sentence"];
-  //   author = widget.sentence["author"];
-  //   gamePicture = widget.gameImage;
-  // }
+  @override
+  void initState() {
+    super.initState();
+    if (widget.gameImage != null) {
+      hasPicture = true;
+    } else {
+      hasPicture = false;
+    }
+  }
 
   void postCalendar() async {
     FunGetter funGetter = FunGetter();
@@ -63,31 +64,44 @@ class _ResultScreenState extends State<ResultScreen> {
     int gameLength = games.length;
     int randomGameIndex = Random().nextInt(gameLength);
 
-    int gameId = games[randomGameIndex]["id"];
-    int gameImageId = games[randomGameIndex]["images_id"];
-
-    var gameImage = await funGetter.getGameImage(gameImageId);
-
     List<dynamic> sentences = await funGetter.getSentences();
     int sentencesLength = sentences.length;
-    int randomSentenceIndex = Random().nextInt(sentencesLength);
+    int randomSentenceIndex = Random().nextInt(sentencesLength - 1) + 1;
 
     var oneSentence = sentences[randomSentenceIndex];
     int photoLength = await funGetter.getPhotosLength();
-    int randomPhotoIndex = Random().nextInt(photoLength) + 1;
+    int randomPhotoIndex = Random().nextInt(photoLength - 1) + 1;
     var photo = await funGetter.getPhoto(randomPhotoIndex);
-    setState(() {
-      gameName = games[randomGameIndex]['name'];
-      gamePicture = gameImage;
-      gameMateriel = games[randomGameIndex]['materiel'];
-      gameDescription = games[randomGameIndex]['description'];
-      gameConclusion = games[randomGameIndex]['conclusion'];
-      gameGoals = games[randomGameIndex]['goals'];
-      childPhoto = photo;
-      sentence = oneSentence['sentence'];
-      author = oneSentence['author'];
-      waiting = false;
-    });
+    if (games[randomGameIndex]["images_id"] != null) {
+      int gameImageId = games[randomGameIndex]["images_id"];
+      var gameImage = await funGetter.getGameImage(gameImageId);
+      setState(() {
+        gameName = games[randomGameIndex]['name'];
+        gamePicture = gameImage;
+        gameMateriel = games[randomGameIndex]['materiel'];
+        gameDescription = games[randomGameIndex]['description'];
+        gameConclusion = games[randomGameIndex]['conclusion'];
+        gameGoals = games[randomGameIndex]['goals'];
+        childPhoto = photo;
+        sentence = oneSentence['sentence'];
+        author = oneSentence['author'];
+        waiting = false;
+        hasPicture = true;
+      });
+    } else {
+      setState(() {
+        gameName = games[randomGameIndex]['name'];
+        gameMateriel = games[randomGameIndex]['materiel'];
+        gameDescription = games[randomGameIndex]['description'];
+        gameConclusion = games[randomGameIndex]['conclusion'];
+        gameGoals = games[randomGameIndex]['goals'];
+        childPhoto = photo;
+        sentence = oneSentence['sentence'];
+        author = oneSentence['author'];
+        waiting = false;
+        hasPicture = false;
+      });
+    }
   }
 
   @override
@@ -143,6 +157,7 @@ class _ResultScreenState extends State<ResultScreen> {
                     Center(
                       child: Text(
                         gameName,
+                        textAlign: TextAlign.center,
                         style: const TextStyle(
                           color: drawColor,
                           fontSize: 35,
@@ -155,7 +170,7 @@ class _ResultScreenState extends State<ResultScreen> {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(20.0),
-                      child: Image.memory(widget.gameImage),
+                      child: hasPicture ? Image.memory(gamePicture) : null,
                     ),
                     const SizedBox(
                       height: 8,

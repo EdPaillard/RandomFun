@@ -24,36 +24,45 @@ class _LoadingScreenState extends State<LoadingScreen> {
   void getRandomness() async {
     // try {
     FunGetter funGetter = FunGetter();
+    int photoLength = await funGetter.getPhotosLength();
+    int randomPhotoIndex = Random().nextInt(photoLength - 1) + 1;
+    var photo = await funGetter.getPhoto(randomPhotoIndex);
     var games = await funGetter.getGames();
 
     int gameLength = games.length;
     int randomGameIndex = Random().nextInt(gameLength);
 
-    int gameId = games[randomGameIndex]["id"];
-    int gameImageId = games[randomGameIndex]["images_id"];
-
-    var gameImage = await funGetter.getGameImage(gameImageId);
-
     List<dynamic> sentences = await funGetter.getSentences();
     int sentencesLength = sentences.length;
-    int randomSentenceIndex = Random().nextInt(sentencesLength);
+    int randomSentenceIndex = Random().nextInt(sentencesLength - 1) + 1;
 
     var oneSentence = sentences[randomSentenceIndex];
-    int photoLength = await funGetter.getPhotosLength();
-    int randomPhotoIndex = Random().nextInt(photoLength);
-    var photo = await funGetter.getPhoto(randomPhotoIndex);
-    print(photo is String);
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: ((context) => ResultScreen(
-              game: games[randomGameIndex],
-              gameImage: gameImage,
-              photo: photo,
-              sentence: oneSentence,
-            )),
-      ),
-    );
+    if (games[randomGameIndex]["images_id"] != null) {
+      int gameImageId = games[randomGameIndex]["images_id"];
+      var gameImage = await funGetter.getGameImage(gameImageId);
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: ((context) => ResultScreen(
+                game: games[randomGameIndex],
+                gameImage: gameImage,
+                photo: photo,
+                sentence: oneSentence,
+              )),
+        ),
+      );
+    } else {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: ((context) => ResultScreen(
+                game: games[randomGameIndex],
+                photo: photo,
+                sentence: oneSentence,
+              )),
+        ),
+      );
+    }
   }
 
   int generateRandomIndex(List list) {

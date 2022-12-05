@@ -25,6 +25,15 @@ defmodule BackRfWeb.PhotoController do
     |> json(photos_length)
   end
 
+  def get_random(conn, _params) do
+    photo_length = Random.get_photo_length()
+    random_index = :rand.uniform(photo_length)
+    photo = Random.get_photo!(random_index)
+    conn
+    |> put_status(200)
+    |> json(photo)
+  end
+
   def create(conn, %{"image" => photo_params}) do
     if(File.exists?(photo_params.path)) do
       case File.read(photo_params.path) do

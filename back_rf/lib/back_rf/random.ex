@@ -217,6 +217,14 @@ defmodule BackRf.Random do
     Repo.aggregate(Photo, :count, :id)
   end
 
+  def get_game_length do
+    Repo.aggregate(Game, :count, :id)
+  end
+
+  def get_sentences_length do
+    Repo.aggregate(Sentence, :count, :id)
+  end
+
   @doc """
   Gets a single photo.
 

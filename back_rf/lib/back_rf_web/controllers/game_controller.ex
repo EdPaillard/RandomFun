@@ -23,6 +23,15 @@ defmodule BackRfWeb.GameController do
     end
   end
 
+  def get_random(conn, _params) do
+    game_length = Random.get_game_length()
+    random_index = :rand.uniform(game_length)
+    game = Random.get_game!(random_index)
+    conn
+    |> put_status(200)
+    |> json(game)
+  end
+
   def show(conn, %{"id" => id}) do
     game = Random.get_game!(id)
     render(conn, "show.json", game: game)
