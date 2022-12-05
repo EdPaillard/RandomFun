@@ -6,6 +6,6 @@
 #     echo "Conf Perso loaded"
 # fi
 
-docker build -t 162.19.66.30:7000/randomfun-frontend:kube-v0.1 .
+docker build -t 162.19.66.30:7000/randomfun-frontend:kube-v0.2 .
 
-docker push 162.19.66.30:7000/randomfun-frontend:kube-v0.1
+docker push 162.19.66.30:7000/randomfun-frontend:kube-v0.2

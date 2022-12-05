@@ -13,7 +13,7 @@ class FunGetter {
   }
 
   Future<dynamic> getRandomGame() async {
-    Uri url = Uri.parse('$backendUrl/games/random/games');
+    Uri url = Uri.parse('$backendUrl/random/games');
     NetworkHelper networkHelper = NetworkHelper(url);
 
     var data = await networkHelper.getDatas();
@@ -38,7 +38,7 @@ class FunGetter {
   }
 
   Future<dynamic> getRandomSentence() async {
-    Uri url = Uri.parse('$backendUrl/sentences/random/sentences');
+    Uri url = Uri.parse('$backendUrl/random/sentences');
     NetworkHelper networkHelper = NetworkHelper(url);
 
     var data = await networkHelper.getDatas();
@@ -64,7 +64,7 @@ class FunGetter {
   }
 
   Future<dynamic> getRandomPhoto() async {
-    Uri url = Uri.parse('$backendUrl/photos/random/photos');
+    Uri url = Uri.parse('$backendUrl/random/photos');
     NetworkHelper networkHelper = NetworkHelper(url);
 
     var data = await networkHelper.getPhoto();
