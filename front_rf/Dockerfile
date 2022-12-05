@@ -13,7 +13,6 @@ RUN flutter pub get
 RUN flutter build apk
 
 FROM nginx:stable-alpine as production-stage
-COPY --from=build /app/build/app/outputs/apk/release/app-release.apk /usr/share/nginx/html/client.apk
-COPY ./default.conf /etc/nginx/conf.d/default.conf
-EXPOSE 8087
+COPY --from=build /app/build/app/outputs/apk/release/app-release.apk /usr/share/nginx/html/iloveu.apk
+EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
