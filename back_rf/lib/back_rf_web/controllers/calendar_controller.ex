@@ -22,9 +22,9 @@ defmodule BackRfWeb.CalendarController do
     end
   end
 
-  def get_random(conn, _params) do
+  # def get_random(conn, _params) do
 
-  end
+  # end
 
   def show(conn, %{"id" => id}) do
     calendar = Random.get_calendar!(id)

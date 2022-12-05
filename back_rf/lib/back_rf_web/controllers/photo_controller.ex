@@ -26,7 +26,7 @@ defmodule BackRfWeb.PhotoController do
   end
 
   def get_random(conn, _params) do
-    photo = list.first(Random.get_random_photo())
+    photo = List.first(Random.get_random_photo())
     conn
     |> put_resp_content_type("image/png")
     |> send_resp(200, photo.image)

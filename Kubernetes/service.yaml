@@ -32,9 +32,9 @@ metadata:
   labels:
     app: randomfun-frontend-svc
 spec:
-  type: ClusterIP
+  type: LoadBalancer
   selector:
     app: randomfun-frontend
   ports:
-    - port: 8000
-      targetPort: 8000
+    - port: 80
+      targetPort: 80

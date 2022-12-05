@@ -21,7 +21,7 @@ defmodule BackRfWeb.SentenceController do
   end
 
   def get_random(conn, _params) do
-    sentence = list.first(Random.get_random_sentence())
+    sentence = List.first(Random.get_random_sentence())
     conn
     |> put_status(200)
     |> json(sentence)

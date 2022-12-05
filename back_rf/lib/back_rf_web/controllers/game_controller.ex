@@ -24,7 +24,7 @@ defmodule BackRfWeb.GameController do
   end
 
   def get_random(conn, _params) do
-    game = list.first(Random.get_random_game())
+    game = List.first(Random.get_random_game())
     conn
     |> put_status(200)
     |> json(game)
