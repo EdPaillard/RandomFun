@@ -26,12 +26,10 @@ defmodule BackRfWeb.PhotoController do
   end
 
   def get_random(conn, _params) do
-    photo_length = Random.get_photo_length()
-    random_index = :rand.uniform(photo_length)
-    photo = Random.get_photo!(random_index)
+    photo = Random.get_random_photo()
     conn
     |> put_resp_content_type("image/png")
-    |> send_resp(200, photo)
+    |> send_resp(200, photo.image)
   end
 
   def create(conn, %{"image" => photo_params}) do

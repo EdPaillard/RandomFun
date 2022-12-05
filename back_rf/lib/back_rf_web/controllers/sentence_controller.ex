@@ -21,9 +21,7 @@ defmodule BackRfWeb.SentenceController do
   end
 
   def get_random(conn, _params) do
-    sentences_length = Random.get_sentences_length()
-    random_index = :rand.uniform(sentences_length)
-    sentence = Random.get_photo!(random_index)
+    sentence = Random.get_random_sentence()
     conn
     |> put_status(200)
     |> json(sentence)

@@ -10,20 +10,16 @@ defmodule BackRfWeb.Router do
 
   scope "/api", BackRfWeb do
     pipe_through :api
-    scope "/games" do
-      resources "/games", GameController, except: [:new, :edit]
-      get "/random/games", GameController, :get_random
-    end
-    scope "/sentences" do
-      resources "/sentences", SentenceController, except: [:new, :edit]
-      get "/random/sentences", SentenceController, :get_random
-    end
-    resources "/", ImagesController, except: [:new, :edit]
+    resources "/games", GameController, except: [:new, :edit]
+    get "/random/games", GameController, :get_random
+    resources "/sentences", SentenceController, except: [:new, :edit]
+    get "/random/sentences", SentenceController, :get_random
+    resources "/images", ImagesController, except: [:new, :edit]
     scope "/photos" do
       resources "/", PhotoController, except: [:new, :edit]
       get "/list/length", PhotoController, :get_length
-      get "/random/photos", PhotoController, :get_random
     end
+    get "/random/photos", PhotoController, :get_random
     resources "/calendar", CalendarController, except: [:new, :edit]
   end
 

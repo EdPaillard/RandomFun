@@ -225,6 +225,30 @@ defmodule BackRf.Random do
     Repo.aggregate(Sentence, :count, :id)
   end
 
+  def get_random_photo do
+    query =
+      from Photo,
+      order_by: fragment("RANDOM()"),
+      limit: 1
+    Repo.all(query)
+  end
+
+  def get_random_game do
+    query =
+      from Game,
+      order_by: fragment("RANDOM()"),
+      limit: 1
+    Repo.all(query)
+  end
+
+  def get_random_sentence do
+    query =
+      from Sentence,
+      order_by: fragment("RANDOM()"),
+      limit: 1
+    Repo.all(query)
+  end
+
   @doc """
   Gets a single photo.
 

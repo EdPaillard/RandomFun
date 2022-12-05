@@ -1,0 +1,21 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: randomfun-client-ingress
+  labels:
+    app: ingress
+  annotations:
+    traefik.ingress.kubernetes.io/router.entrypoints: web
+  namespace: randomfun
+spec:
+  rules:
+  - host: matoutebelle.eu
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: randomfun-frontend-svc
+            port: 
+              number: 80
