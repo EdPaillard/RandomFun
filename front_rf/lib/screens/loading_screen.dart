@@ -31,34 +31,37 @@ class _LoadingScreenState extends State<LoadingScreen> {
     if (game["images_id"] != null) {
       int gameImageId = game["images_id"];
       var gameImage = await funGetter.getGameImage(gameImageId);
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: ((context) => ResultScreen(
-                game: game,
-                gameImage: gameImage,
-                photo: photo,
-                sentence: sentence,
-              )),
-        ),
-      );
+      picPush(game, gameImage, photo, sentence);
     } else {
-      Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: ((context) => ResultScreen(
-                game: game,
-                photo: photo,
-                sentence: sentence,
-              )),
-        ),
-      );
+      noPicPush(game, photo, sentence);
     }
   }
 
-  int generateRandomIndex(List list) {
-    int listLength = list.length;
-    return Random().nextInt(listLength);
+  void noPicPush(var game, var photo, var sentence) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: ((context) => ResultScreen(
+              game: game,
+              photo: photo,
+              sentence: sentence,
+            )),
+      ),
+    );
+  }
+
+  void picPush(var game, var gameImage, var photo, var sentence) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: ((context) => ResultScreen(
+              game: game,
+              gameImage: gameImage,
+              photo: photo,
+              sentence: sentence,
+            )),
+      ),
+    );
   }
 
   @override
