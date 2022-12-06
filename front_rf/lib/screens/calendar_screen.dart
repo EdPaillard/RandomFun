@@ -14,7 +14,7 @@ class _CalendarScreenState extends State<CalendarScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 255, 200, 30),
-        title: const Text("❤️  RandomFun"),
+        title: const Text("❤️  DolciRecordi"),
       ),
       body: SfCalendar(
         dataSource: _getCalendarDataSource(),

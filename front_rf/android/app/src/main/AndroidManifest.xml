@@ -2,7 +2,7 @@
     package="com.example.front_rf">
    <uses-permission android:name="android.permission.INTERNET" />
    <application
-        android:label="front_rf"
+        android:label="DolciRecordi"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

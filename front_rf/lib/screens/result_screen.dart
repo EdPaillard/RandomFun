@@ -121,7 +121,7 @@ class _ResultScreenState extends State<ResultScreen> {
         automaticallyImplyLeading: false,
         backgroundColor: headerColor,
         title: const Text(
-          "❤️  RandomFun",
+          "❤️  DolciRecordi",
           style: TextStyle(color: drawColor),
         ),
       ),
