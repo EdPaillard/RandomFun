@@ -2,7 +2,6 @@ defmodule BackRfWeb.Router do
   use BackRfWeb, :router
 
   pipeline :api do
-    plug Corsica, origins: "*"
     plug :accepts, ["json"]
     plug Plug.Parsers,
      parsers: [:url_encoded, :multipart],
