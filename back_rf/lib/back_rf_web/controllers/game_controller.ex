@@ -37,7 +37,7 @@ defmodule BackRfWeb.GameController do
 
   def update(conn, %{"id" => id, "game" => game_params}) do
     game = Random.get_game!(id)
-    with {:ok, %Game{} = game} <- Random.update_game(game, %{"game" => game_params}) do
+    with {:ok, %Game{} = game} <- Random.update_game(game, game_params) do
       conn
       |> put_status(200)
       |> json(game)

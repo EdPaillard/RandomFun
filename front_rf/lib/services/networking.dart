@@ -37,15 +37,13 @@ class NetworkHelper {
       "end_time": endTime.toString()
     };
     //base64.encode(photo)
-    print('NWHelper $body');
     http.Response response = await http.post(url, body: body);
-    print('NWHelper ${response.body}');
 
     if (response.statusCode == 201) {
       Map<String, bool> result = {"Success": true};
       return result;
     } else {
-      Map<String, bool> result = {"Success": false};
+      Map<String, bool> result = {"Error": false};
       return result;
     }
   }

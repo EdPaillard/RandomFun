@@ -73,7 +73,7 @@ spec:
     spec:
       containers:
         - name: randomfun-backend
-          image: 162.19.66.30:7000/randomfun-backend:kube-v0.9.2
+          image: 162.19.66.30:7000/randomfun-backend:kube-v0.9.3
           ports:
             - containerPort: 7777
           env:
