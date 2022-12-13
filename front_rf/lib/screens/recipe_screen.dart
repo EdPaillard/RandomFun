@@ -26,8 +26,6 @@ class _RecipeScreenState extends State<RecipeScreen> {
   void addRecipeToFavorite(String recID) async {
     FunGetter funGetter = FunGetter();
     var data = await funGetter.addRecipeToFavorite(recID);
-    print(data);
-    print('Jour');
   }
 
   @override

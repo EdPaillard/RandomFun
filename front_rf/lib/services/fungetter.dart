@@ -115,12 +115,12 @@ class FunGetter {
     }
   }
 
-  Future<List<String>> getFavRecipes() async {
+  Future<List<dynamic>> getFavRecipes() async {
     Uri url = Uri.parse('$backendUrl/recipe');
     NetworkHelper networkHelper = NetworkHelper(url);
 
     var data = await networkHelper.getDatas();
-    return data;
+    return data['data'];
   }
 
   Future<dynamic> getOneFavRecipe(String id) async {

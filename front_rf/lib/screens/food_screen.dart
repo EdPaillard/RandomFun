@@ -14,7 +14,7 @@ class FoodScreen extends StatefulWidget {
 
 class _FoodScreenState extends State<FoodScreen> {
   late List<String> ingredients = [];
-  late List<String> favRecipesID = [];
+  late List<dynamic> favRecipesID = [];
   late List<dynamic> favRecipes = [];
 
   void fillIngredientsList(String ingredient) {
@@ -48,7 +48,7 @@ class _FoodScreenState extends State<FoodScreen> {
 
   void getFavRecipesID() async {
     FunGetter funGetter = FunGetter();
-    List<String> data = await funGetter.getFavRecipes();
+    var data = await funGetter.getFavRecipes();
     setState(() {
       favRecipesID.addAll(data);
     });
@@ -57,8 +57,8 @@ class _FoodScreenState extends State<FoodScreen> {
 
   void getFavRecipes() async {
     FunGetter funGetter = FunGetter();
-    for (var id in favRecipesID) {
-      var data = await funGetter.getRecipeByID(id);
+    for (var elem in favRecipesID) {
+      var data = await funGetter.getRecipeByID(elem['recipe_id']);
 
       setState(() {
         favRecipes.add(data);
