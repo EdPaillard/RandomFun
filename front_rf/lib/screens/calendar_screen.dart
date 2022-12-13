@@ -81,8 +81,6 @@ _DataSource _getCalendarDataSource() {
 
 Widget resourceBuilder(
     BuildContext context, ResourceViewHeaderDetails details) {
-  print(details);
-  print('HEYYYY');
   if (details.resource.image != null) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,

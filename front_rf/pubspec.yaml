@@ -32,6 +32,12 @@ flutter:
   assets:
     - images/random_background.jpg
     - images/background.jpg
+    - images/jambon.png
+    - images/courgettes.png
+    - images/tomates.png
+    - images/oeufs.png
+    - images/pates.png
+    - images/riz.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

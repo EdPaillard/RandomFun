@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:front_rf/screens/result_screen.dart';
@@ -7,7 +5,7 @@ import 'package:front_rf/services/fungetter.dart';
 import 'package:front_rf/utilities/constants.dart';
 
 class LoadingScreen extends StatefulWidget {
-  LoadingScreen({Key? key}) : super(key: key);
+  const LoadingScreen({Key? key}) : super(key: key);
 
   @override
   State<LoadingScreen> createState() => _LoadingScreenState();
@@ -27,7 +25,6 @@ class _LoadingScreenState extends State<LoadingScreen> {
     var photo = await funGetter.getRandomPhoto();
     var game = await funGetter.getRandomGame();
     var sentence = await funGetter.getRandomSentence();
-    print(sentence);
     if (game["images_id"] != null) {
       int gameImageId = game["images_id"];
       var gameImage = await funGetter.getGameImage(gameImageId);

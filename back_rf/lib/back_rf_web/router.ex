@@ -21,6 +21,7 @@ defmodule BackRfWeb.Router do
     end
     get "/random/photos", PhotoController, :get_random
     resources "/calendar", CalendarController, except: [:new, :edit]
+    resources "/recipe", RecipeController, except: [:new, :edit]
   end
 
   # Enables LiveDashboard only for development

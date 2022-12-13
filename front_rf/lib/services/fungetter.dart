@@ -2,8 +2,30 @@ import 'package:flutter/foundation.dart';
 import 'package:front_rf/services/networking.dart';
 
 const backendUrl = 'http://162.19.66.30:7777/api';
+const foodAPIUrl = 'https://api.edamam.com/api/recipes/v2';
+const appId = '0d09fca5';
+const appKey = '1c832a7723a2c5ca1fba36f8418d208b';
 
 class FunGetter {
+  Future<dynamic> getRecipe(List<String> ingredients) async {
+    String ingredientsUrl = ingredients.join(',');
+    Uri url = Uri.parse(
+        '$foodAPIUrl?type=public&q=$ingredientsUrl&app_id=$appId&app_key=$appKey');
+    NetworkHelper networkHelper = NetworkHelper(url);
+
+    var data = await networkHelper.getDatas();
+    return data;
+  }
+
+  Future<dynamic> getRecipeByID(String id) async {
+    Uri url =
+        Uri.parse('$foodAPIUrl/$id?type=public&app_id=$appId&app_key=$appKey');
+    NetworkHelper networkHelper = NetworkHelper(url);
+
+    var data = await networkHelper.getDatas();
+    return data;
+  }
+
   Future<List<dynamic>> getGames() async {
     Uri url = Uri.parse('$backendUrl/games');
     NetworkHelper networkHelper = NetworkHelper(url);
@@ -41,7 +63,6 @@ class FunGetter {
     NetworkHelper networkHelper = NetworkHelper(url);
 
     var data = await networkHelper.getDatas();
-    print(data);
     return data;
   }
 
@@ -71,16 +92,42 @@ class FunGetter {
 
   Future<Map<String, bool>> postCalendar(
       String gameName, Uint8List photo) async {
-    print('INTO FUNGETTER $gameName');
     try {
       Uri url = Uri.parse('$backendUrl/calendar');
       NetworkHelper networkHelper = NetworkHelper(url);
-      print('BackFromNWHelper');
       var data = await networkHelper.postData(gameName, photo);
       return data;
     } catch (e) {
       Map<String, bool> error = {"Error": true};
       return error;
     }
+  }
+
+  Future<dynamic> addRecipeToFavorite(String id) async {
+    try {
+      Uri url = Uri.parse('$backendUrl/recipe');
+      NetworkHelper networkHelper = NetworkHelper(url);
+      var data = await networkHelper.postRecipe(id);
+      return data;
+    } catch (e) {
+      Map<String, bool> error = {"Error": true};
+      return error;
+    }
+  }
+
+  Future<List<String>> getFavRecipes() async {
+    Uri url = Uri.parse('$backendUrl/recipe');
+    NetworkHelper networkHelper = NetworkHelper(url);
+
+    var data = await networkHelper.getDatas();
+    return data;
+  }
+
+  Future<dynamic> getOneFavRecipe(String id) async {
+    Uri url = Uri.parse('$backendUrl/recipe/$id');
+    NetworkHelper networkHelper = NetworkHelper(url);
+
+    var data = await networkHelper.getDatas();
+    return data;
   }
 }

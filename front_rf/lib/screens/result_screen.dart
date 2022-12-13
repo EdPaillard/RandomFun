@@ -1,9 +1,7 @@
-import 'dart:convert';
-import 'dart:math';
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:front_rf/screens/random_screen.dart';
 import 'package:front_rf/services/fungetter.dart';
 import 'package:front_rf/utilities/constants.dart';
 
@@ -49,11 +47,10 @@ class _ResultScreenState extends State<ResultScreen> {
     }
   }
 
-  void postCalendar() async {
-    FunGetter funGetter = FunGetter();
-    var data = await funGetter.postCalendar(gameName, childPhoto);
-    print('POSTDATA $data');
-  }
+  // void postCalendar() async {
+  //   FunGetter funGetter = FunGetter();
+  //   var data = await funGetter.postCalendar(gameName, childPhoto);
+  // }
 
   void reloadRandom() async {
     setState(() {
@@ -63,10 +60,6 @@ class _ResultScreenState extends State<ResultScreen> {
     var photo = await funGetter.getRandomPhoto();
     var game = await funGetter.getRandomGame();
     var sentence = await funGetter.getRandomSentence();
-    print(sentence['author']);
-    print(sentence['author'] is String);
-    print(author);
-    print(author is String);
     if (game["images_id"] != null) {
       int gameImageId = game["images_id"];
       var gameImage = await funGetter.getGameImage(gameImageId);
@@ -118,6 +111,20 @@ class _ResultScreenState extends State<ResultScreen> {
         //     },
         //   ),
         // ],
+        actions: <Widget>[
+          IconButton(
+            icon: const Icon(Icons.home),
+            tooltip: 'Accueil',
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: ((context) => const RandomScreen()),
+                ),
+              );
+            },
+          ),
+        ],
         automaticallyImplyLeading: false,
         backgroundColor: headerColor,
         title: const Text(

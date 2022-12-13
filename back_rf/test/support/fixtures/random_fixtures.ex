@@ -94,4 +94,18 @@ defmodule BackRf.RandomFixtures do
 
   #   calendar
   # end
+
+  @doc """
+  Generate a recipe.
+  """
+  def recipe_fixture(attrs \\ %{}) do
+    {:ok, recipe} =
+      attrs
+      |> Enum.into(%{
+        recipe_id: "some recipe_id"
+      })
+      |> BackRf.Random.create_recipe()
+
+    recipe
+  end
 end
