@@ -166,6 +166,246 @@ class _FoodScreenState extends State<FoodScreen> {
                       ),
                     ],
                   ),
+                  Row(
+                    children: [
+                      FoodCard(
+                        image: 'images/poivron.png',
+                        aliment: 'sweet-pepper',
+                        fillIngredients: fillIngredientsList,
+                        removeIngredients: removeIngredientsList,
+                      ),
+                      FoodCard(
+                        image: 'images/oignon.png',
+                        aliment: 'onion',
+                        fillIngredients: fillIngredientsList,
+                        removeIngredients: removeIngredientsList,
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      FoodCard(
+                        image: 'images/asperge.png',
+                        aliment: 'asparagus',
+                        fillIngredients: fillIngredientsList,
+                        removeIngredients: removeIngredientsList,
+                      ),
+                      FoodCard(
+                        image: 'images/magret.png',
+                        aliment: 'duck-breast',
+                        fillIngredients: fillIngredientsList,
+                        removeIngredients: removeIngredientsList,
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      FoodCard(
+                        image: 'images/steak-hache.png',
+                        aliment: 'minced-beef',
+                        fillIngredients: fillIngredientsList,
+                        removeIngredients: removeIngredientsList,
+                      ),
+                      FoodCard(
+                        image: 'images/haricot-vert.png',
+                        aliment: 'string-bean',
+                        fillIngredients: fillIngredientsList,
+                        removeIngredients: removeIngredientsList,
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      FoodCard(
+                        image: 'images/fish.png',
+                        aliment: 'fish',
+                        fillIngredients: fillIngredientsList,
+                        removeIngredients: removeIngredientsList,
+                      ),
+                      FoodCard(
+                        image: 'images/mais.png',
+                        aliment: 'corn',
+                        fillIngredients: fillIngredientsList,
+                        removeIngredients: removeIngredientsList,
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      FoodCard(
+                        image: 'images/poireau.png',
+                        aliment: 'leek',
+                        fillIngredients: fillIngredientsList,
+                        removeIngredients: removeIngredientsList,
+                      ),
+                      FoodCard(
+                        image: 'images/potiron.png',
+                        aliment: 'pumpkin',
+                        fillIngredients: fillIngredientsList,
+                        removeIngredients: removeIngredientsList,
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      FoodCard(
+                        image: 'images/champignons.png',
+                        aliment: 'mushroom',
+                        fillIngredients: fillIngredientsList,
+                        removeIngredients: removeIngredientsList,
+                      ),
+                      FoodCard(
+                        image: 'images/lentilles.png',
+                        aliment: 'lentils',
+                        fillIngredients: fillIngredientsList,
+                        removeIngredients: removeIngredientsList,
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      FoodCard(
+                        image: 'images/patates.png',
+                        aliment: 'potatoe',
+                        fillIngredients: fillIngredientsList,
+                        removeIngredients: removeIngredientsList,
+                      ),
+                      FoodCard(
+                        image: 'images/carotte.png',
+                        aliment: 'carrot',
+                        fillIngredients: fillIngredientsList,
+                        removeIngredients: removeIngredientsList,
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      FoodCard(
+                        image: 'images/concombre.png',
+                        aliment: 'cucumber',
+                        fillIngredients: fillIngredientsList,
+                        removeIngredients: removeIngredientsList,
+                      ),
+                      FoodCard(
+                        image: 'images/petits-pois.png',
+                        aliment: 'garden-peas',
+                        fillIngredients: fillIngredientsList,
+                        removeIngredients: removeIngredientsList,
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      FoodCard(
+                        image: 'images/aubergine.png',
+                        aliment: 'eggplant',
+                        fillIngredients: fillIngredientsList,
+                        removeIngredients: removeIngredientsList,
+                      ),
+                      FoodCard(
+                        image: 'images/avocat.png',
+                        aliment: 'avocado',
+                        fillIngredients: fillIngredientsList,
+                        removeIngredients: removeIngredientsList,
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      FoodCard(
+                        image: 'images/radis.png',
+                        aliment: 'radish',
+                        fillIngredients: fillIngredientsList,
+                        removeIngredients: removeIngredientsList,
+                      ),
+                      FoodCard(
+                        image: 'images/melon.png',
+                        aliment: 'melon',
+                        fillIngredients: fillIngredientsList,
+                        removeIngredients: removeIngredientsList,
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      FoodCard(
+                        image: 'images/pasteque.png',
+                        aliment: 'watermelon',
+                        fillIngredients: fillIngredientsList,
+                        removeIngredients: removeIngredientsList,
+                      ),
+                      FoodCard(
+                        image: 'images/salade.png',
+                        aliment: 'salad',
+                        fillIngredients: fillIngredientsList,
+                        removeIngredients: removeIngredientsList,
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      FoodCard(
+                        image: 'images/betterave.png',
+                        aliment: 'beet',
+                        fillIngredients: fillIngredientsList,
+                        removeIngredients: removeIngredientsList,
+                      ),
+                      FoodCard(
+                        image: 'images/noix.png',
+                        aliment: 'nuts',
+                        fillIngredients: fillIngredientsList,
+                        removeIngredients: removeIngredientsList,
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      FoodCard(
+                        image: 'images/brocoli.png',
+                        aliment: 'broccoli',
+                        fillIngredients: fillIngredientsList,
+                        removeIngredients: removeIngredientsList,
+                      ),
+                      FoodCard(
+                        image: 'images/choufleur.png',
+                        aliment: 'cauliflower',
+                        fillIngredients: fillIngredientsList,
+                        removeIngredients: removeIngredientsList,
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      FoodCard(
+                        image: 'images/pomme.png',
+                        aliment: 'apple',
+                        fillIngredients: fillIngredientsList,
+                        removeIngredients: removeIngredientsList,
+                      ),
+                      FoodCard(
+                        image: 'images/epinard.png',
+                        aliment: 'spinach',
+                        fillIngredients: fillIngredientsList,
+                        removeIngredients: removeIngredientsList,
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      FoodCard(
+                        image: 'images/pousses-soja.png',
+                        aliment: 'soybean',
+                        fillIngredients: fillIngredientsList,
+                        removeIngredients: removeIngredientsList,
+                      ),
+                      FoodCard(
+                        image: 'images/haricots-rouges.png',
+                        aliment: 'kidney-bean',
+                        fillIngredients: fillIngredientsList,
+                        removeIngredients: removeIngredientsList,
+                      ),
+                    ],
+                  ),
                   const SizedBox(
                     height: 40,
                   ),
@@ -190,6 +430,9 @@ class _FoodScreenState extends State<FoodScreen> {
                       ),
                     ),
                   ),
+                  const SizedBox(
+                    height: 20,
+                  )
                 ],
               ),
             ),
@@ -209,12 +452,14 @@ class _FoodScreenState extends State<FoodScreen> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
-                              Text(
-                                elem['recipe']['label'],
-                                textAlign: TextAlign.center,
-                                style: const TextStyle(
-                                  fontSize: 30,
-                                  fontFamily: 'Pacifico',
+                              Center(
+                                child: Text(
+                                  elem['recipe']['label'],
+                                  textAlign: TextAlign.center,
+                                  style: const TextStyle(
+                                    fontSize: 30,
+                                    fontFamily: 'Pacifico',
+                                  ),
                                 ),
                               ),
                               const SizedBox(

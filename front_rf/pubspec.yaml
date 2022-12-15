@@ -38,6 +38,37 @@ flutter:
     - images/oeufs.png
     - images/pates.png
     - images/riz.png
+    - images/poivron.png
+    - images/oignon.png
+    - images/asperge.png
+    - images/magret.png
+    - images/steak-hache.png
+    - images/poulet.png
+    - images/fish.png
+    - images/mais.png
+    - images/champignons.png
+    - images/lentilles.png
+    - images/haricot-vert.png
+    - images/patates.png
+    - images/carotte.png
+    - images/concombre.png
+    - images/petits-pois.png
+    - images/aubergine.png
+    - images/avocat.png
+    - images/radis.png
+    - images/melon.png
+    - images/pasteque.png
+    - images/salade.png
+    - images/betterave.png
+    - images/noix.png
+    - images/poireau.png
+    - images/potiron.png
+    - images/brocoli.png
+    - images/choufleur.png
+    - images/pomme.png
+    - images/epinard.png
+    - images/pousses-soja.png
+    - images/haricots-rouges.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

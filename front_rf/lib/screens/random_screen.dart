@@ -44,60 +44,66 @@ class RandomScreen extends StatelessWidget {
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.fromLTRB(30, 120, 30, 30),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.all(10),
-                    backgroundColor: headerColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30.0),
-                    ),
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: ((context) => const LoadingScreen()),
+                child: SizedBox(
+                  width: 320,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.all(10),
+                      backgroundColor: headerColor,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30.0),
                       ),
-                    );
-                  },
-                  child: const Text(
-                    'Générateur aléatoire d\'amour',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 30.0,
-                      fontFamily: 'Pacifico',
-                      fontWeight: FontWeight.bold,
-                      color: drawColor,
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: ((context) => const LoadingScreen()),
+                        ),
+                      );
+                    },
+                    child: const Text(
+                      'Générateur aléatoire d\'amour',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 30.0,
+                        fontFamily: 'Pacifico',
+                        fontWeight: FontWeight.bold,
+                        color: drawColor,
+                      ),
                     ),
                   ),
                 ),
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(30, 60, 30, 30),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    padding: const EdgeInsets.fromLTRB(50, 30, 50, 30),
-                    backgroundColor: headerColor,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30.0),
-                    ),
-                  ),
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: ((context) => const FoodScreen()),
+                child: SizedBox(
+                  width: 320,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      padding: const EdgeInsets.fromLTRB(30, 30, 30, 30),
+                      backgroundColor: headerColor,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30.0),
                       ),
-                    );
-                  },
-                  child: const Text(
-                    'What\'s for diner ?',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 30.0,
-                      fontFamily: 'Pacifico',
-                      fontWeight: FontWeight.bold,
-                      color: drawColor,
+                    ),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: ((context) => const FoodScreen()),
+                        ),
+                      );
+                    },
+                    child: const Text(
+                      'What\'s for diner ?',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 30.0,
+                        fontFamily: 'Pacifico',
+                        fontWeight: FontWeight.bold,
+                        color: drawColor,
+                      ),
                     ),
                   ),
                 ),
