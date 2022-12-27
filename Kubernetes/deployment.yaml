@@ -122,6 +122,6 @@ spec:
     spec:
       containers:
       - name: randomfun-frontend
-        image: 162.19.66.30:7000/randomfun-frontend:kube-v0.9.3
+        image: 162.19.66.30:7000/randomfun-frontend:kube-v0.9.4
         ports:
         - containerPort: 8089

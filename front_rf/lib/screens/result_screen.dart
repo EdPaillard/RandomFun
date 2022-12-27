@@ -58,6 +58,10 @@ class _ResultScreenState extends State<ResultScreen> {
   void reloadRandom() async {
     setState(() {
       waiting = true;
+      matCollapsed = true;
+      desCollapsed = true;
+      objCollapsed = true;
+      conCollapsed = true;
     });
     FunGetter funGetter = FunGetter();
     var photo = await funGetter.getRandomPhoto();
