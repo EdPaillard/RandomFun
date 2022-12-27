@@ -34,7 +34,10 @@ class _ResultScreenState extends State<ResultScreen> {
   late String sentences = widget.sentence["sentence"];
   late String author = widget.sentence["author"];
   bool waiting = false;
-  bool collapsed = true;
+  bool matCollapsed = true;
+  bool desCollapsed = true;
+  bool objCollapsed = true;
+  bool conCollapsed = true;
   late bool hasPicture;
 
   @override
@@ -179,13 +182,13 @@ class _ResultScreenState extends State<ResultScreen> {
                     ),
                     ExpansionTile(
                       onExpansionChanged: (value) => setState(() {
-                        collapsed = !collapsed;
+                        matCollapsed = !value;
                       }),
                       collapsedBackgroundColor: strawberry,
                       backgroundColor: cream,
                       collapsedIconColor: cream,
                       iconColor: strawberry,
-                      title: collapsed
+                      title: matCollapsed
                           ? const Text(
                               "Materiel",
                               style: TextStyle(
@@ -221,13 +224,13 @@ class _ResultScreenState extends State<ResultScreen> {
                     ),
                     ExpansionTile(
                       onExpansionChanged: (value) => setState(() {
-                        collapsed = !collapsed;
+                        desCollapsed = !value;
                       }),
                       collapsedBackgroundColor: minorColor,
                       backgroundColor: drawColor,
                       collapsedIconColor: cream,
                       iconColor: strawberry,
-                      title: collapsed
+                      title: desCollapsed
                           ? const Text(
                               "Description",
                               style: TextStyle(
@@ -263,13 +266,13 @@ class _ResultScreenState extends State<ResultScreen> {
                     ),
                     ExpansionTile(
                       onExpansionChanged: (value) => setState(() {
-                        collapsed = !collapsed;
+                        objCollapsed = !value;
                       }),
                       collapsedBackgroundColor: minorColor,
                       backgroundColor: drawColor,
                       collapsedIconColor: cream,
                       iconColor: strawberry,
-                      title: collapsed
+                      title: objCollapsed
                           ? const Text(
                               "Objectifs",
                               style: TextStyle(
@@ -304,13 +307,13 @@ class _ResultScreenState extends State<ResultScreen> {
                     ),
                     ExpansionTile(
                       onExpansionChanged: (value) => setState(() {
-                        collapsed = !collapsed;
+                        conCollapsed = !value;
                       }),
                       collapsedBackgroundColor: minorColor,
                       backgroundColor: drawColor,
                       collapsedIconColor: cream,
                       iconColor: strawberry,
-                      title: collapsed
+                      title: conCollapsed
                           ? const Text(
                               "Conclusion",
                               style: TextStyle(
