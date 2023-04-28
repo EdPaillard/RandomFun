@@ -48,7 +48,7 @@ spec:
                 name: randomfun-configmap
                 key: POSTGRES_PORT
         volumeMounts:
-        - mountPath: "/var/lib/mysql-files/randomfun"
+        - mountPath: "/var/lib/postgresql/data"
           name: randomfun-pv
       volumes:
         - name: randomfun-pv
