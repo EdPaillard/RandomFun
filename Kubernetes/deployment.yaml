@@ -109,7 +109,7 @@ metadata:
   name: randomfun-frontend
   labels:
     app: randomfun-frontend
-  namespace: randomfun
+  namespace: dolcerecordi
 spec:
   replicas: 1
   selector:
